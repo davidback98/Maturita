@@ -8,6 +8,7 @@ import java.net.NetworkInterface;
 import java.util.List;
 
 public  class Broadcast implements Runnable {
+	//var
 	private int porta;
 	private int serverPorta;
 	public Broadcast(int porta, int serverPorta){
