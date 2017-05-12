@@ -18,14 +18,10 @@ public class ServerSocketThreaded implements Runnable {
 	@Override
 	public void run() {
 			try {
-					serverSocket = new ServerSocket(porta);
-					do{
-						clientSocket = serverSocket.accept();
-						BufferedReader inDaClient = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-						do{
-							inDaClient.ready();
-							System.out.println(inDaClient.readLine());
-						}while(inDaClient.ready());
+				serverSocket = new ServerSocket(porta);
+				do{
+					clientSocket = serverSocket.accept();
+					GestioneDispositivi gestioneDispositivi = new GestioneDispositivi(clientSocket);
 				}while(true);
 			} catch (IOException e) {
 				e.printStackTrace();

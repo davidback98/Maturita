@@ -1,40 +1,12 @@
 package src;
 import java.sql.*;
 
+import util.Database;
+
 public class Codici{
-	private static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://localhost:3306/bacchetta";
-	//private static final String DB_URL = "jdbc:mysql://localhost:3306";
 	
-	static final String UTENTE = "root";
-	static final String PASS = "";
-	
-	@SuppressWarnings("unused")
-	private static final Codici db = new Codici();
-	
-	private Codici(){
-		System.out.println("Connessione al Database...");
-		try{
-			Class.forName(Codici.JDBC_DRIVER);
-		}catch(ClassNotFoundException e){
-			System.out.println("ERRORE: driver JDBC non trovato");
-		}
-			
-	}
-	
-	private static Connection getConnessione(){
-		Connection conn = null;
-		try {
-			conn = DriverManager.getConnection(DB_URL, UTENTE, PASS);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return conn;
-	}
 	public static boolean codicePresente(int codice){
-		Connection conn =  getConnessione();
+		Connection conn = Database.getConnessione();
 		try(
 				Statement stmt = conn.createStatement();
 		) {
@@ -55,7 +27,7 @@ public class Codici{
 	}
 	
 	public static void assegnazioneCodice(int codice){
-		Connection conn = getConnessione();
+		Connection conn = Database.getConnessione();
 		try(
 				Statement cmd = conn.createStatement();
 		){
