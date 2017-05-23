@@ -26,15 +26,4 @@ public class Codici{
 		}
 	}
 	
-	public static void assegnazioneCodice(int codice){
-		Connection conn = Database.getConnessione();
-		try(
-				Statement cmd = conn.createStatement();
-		){
-			String sql = "INSERT INTO Dispositivi (Codice) VALUES ('" +codice +"');";
-			cmd.executeUpdate(sql);
-		}catch(SQLException e){
-			System.out.println(e.getMessage());
-		}
-	}
 }
