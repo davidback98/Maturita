@@ -14,7 +14,7 @@ public  class Broadcast implements Runnable {
 	public Broadcast(int porta, int serverPorta){
 		this.porta = porta;
 		this.serverPorta = serverPorta;
-		new Thread(this).start();
+		new Thread(this, "Broadcast").start();
 	}
 	public void run(){
 		try{

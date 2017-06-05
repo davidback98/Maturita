@@ -5,10 +5,12 @@ import java.io.IOException;
 import util.NumeroCasuale;
 
 public class Maturita {
-
+	static final int serverPort 	= 10000;
+	static final int broadcastPort 	= 1000;
+	
 	public static void main(String[] args) throws IOException{
-		ServerSocketThreaded serverSocket = new ServerSocketThreaded(10000);
-		Broadcast broadcastTh = new Broadcast(1000,10000);
+		ServerSocketThreaded serverSocket = new ServerSocketThreaded(serverPort);
+		Broadcast broadcastTh = new Broadcast(broadcastPort, serverPort);
 	}
 
 }
